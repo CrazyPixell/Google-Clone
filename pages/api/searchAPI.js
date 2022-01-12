@@ -1,15 +1,15 @@
-// import axios from 'axios';
+export const getSearchData = async (context, startIndex) => {
+  try {
+    const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}&cx=${process.env.NEXT_PUBLIC_CONTEXT_KEY}&q=${context}&start=${startIndex}`;
 
-// export const getSearchData = async context => {
-//   try {
-//     const {
-//       data: { data },
-//     } = await axios.get(
-//       `https://customsearch.googleapis.com/customsearch/v1?key=${process.env.NEXT_GOOGLE_API_KEY}&cx=${process.env.NEXT_CONTEXT_KEY}&q=${context}`
-//     );
+    const encodedUrl = encodeURI(url);
 
-//     return data;
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
+    const res = await fetch(encodedUrl);
+
+    const data = await res.json();
+
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};

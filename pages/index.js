@@ -29,13 +29,13 @@ export default function Home() {
       </Head>
 
       {/* Header */}
-      <header className='flex w-full p-5 justify-between text-md text-gray-700'>
-        <div className='flex space-x-4 items-center'>
+      <header className='flex w-full p-5 justify-end text-md text-gray-700'>
+        {/* <div className='flex space-x-4 items-center'>
           <p className='link'>About</p>
           <p className='link'>Store</p>
-        </div>
+        </div> */}
 
-        <div className='flex space-x-4 items-center'>
+        <div className='flex space-x-4 items-center '>
           <p className='link'>Почта</p>
           <p className='link'>Изображения</p>
           {/* Icon */}
