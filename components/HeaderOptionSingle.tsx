@@ -1,4 +1,16 @@
-const HeaderOptionSingle = ({ Icon, title, selected }) => {
+import React from 'react';
+
+interface HeaderOptionSingleProps {
+  Icon: (props: React.SVGProps<SVGSVGElement>) => React.ReactElement;
+  title: string;
+  selected?: boolean;
+}
+
+const HeaderOptionSingle: React.FC<HeaderOptionSingleProps> = ({
+  Icon,
+  title,
+  selected,
+}): React.ReactElement => {
   return (
     <div
       className={`flex items-center space-x-1 border-b-4 border-transparent hover:text-blue-500  hover:border-blue-500 pb-3 cursor-pointer ${

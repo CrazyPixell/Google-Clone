@@ -4,16 +4,16 @@ import Footer from '../components/Footer';
 import { ViewGridIcon, MicrophoneIcon } from '@heroicons/react/solid';
 import { SearchIcon } from '@heroicons/react/outline';
 import Image from 'next/image';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
 import { useRouter } from 'next/router';
 
 export default function Home() {
   const searchInputRef = useRef(null);
   const router = useRouter();
 
-  const search = e => {
+  const search = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const term = searchInputRef.current.value;
+    const term: string = searchInputRef.current.value;
 
     if (!term) return;
 
@@ -28,17 +28,10 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      {/* Header */}
       <header className='flex w-full p-5 justify-end text-md text-gray-700'>
-        {/* <div className='flex space-x-4 items-center'>
-          <p className='link'>About</p>
-          <p className='link'>Store</p>
-        </div> */}
-
         <div className='flex space-x-4 items-center '>
           <p className='link'>Почта</p>
           <p className='link'>Изображения</p>
-          {/* Icon */}
           <ViewGridIcon className='h-10 w-10 p-2 rounded-full hover:bg-gray-100 cursor-pointer' />
 
           <Avatar
@@ -48,7 +41,6 @@ export default function Home() {
           />
         </div>
       </header>
-      {/* Body */}
       <form className='flex flex-col items-center mt-44 flex-grow w-4/5'>
         <Image
           src='https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1920px-Google_2015_logo.svg.png'
@@ -76,8 +68,6 @@ export default function Home() {
           </button>
         </div>
       </form>
-
-      {/* Footer */}
       <Footer />
     </div>
   );

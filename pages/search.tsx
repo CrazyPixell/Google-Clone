@@ -1,11 +1,17 @@
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import Header from '../components/Header';
-import { getSearchData } from '../pages/api/searchAPI';
+import { getSearchData } from './api/searchAPI';
 import Response from '../Response';
 import SearchResults from '../components/SearchResults';
+import { SearchResultsInterface } from '../models/Search';
+import { GetServerSideProps, GetServerSidePropsResult } from 'next';
 
-const Search = ({ results }) => {
+interface SearchProps {
+  results: SearchResultsInterface;
+}
+
+const Search: React.FC<SearchProps> = ({ results }): React.ReactElement => {
   const router = useRouter();
 
   return (
@@ -16,9 +22,7 @@ const Search = ({ results }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      {/* Header */}
       <Header />
-      {/* Search Results */}
       <SearchResults results={results} />
     </div>
   );
@@ -26,7 +30,11 @@ const Search = ({ results }) => {
 
 export default Search;
 
-export const getServerSideProps = async context => {
+export const getServerSideProps: GetServerSideProps = async (
+  context
+): Promise<
+  GetServerSidePropsResult<{ results: Array<SearchResultsInterface> }>
+> => {
   const useDummyData = false;
   const startIndex = context.query.start || '0';
 
